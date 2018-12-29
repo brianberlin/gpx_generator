@@ -135,3 +135,9 @@ header nav a {
 
 /* This file is for your main application css. */
 
+.map {
+    display: flex;
+    height: 500px;
+    width: 100%;
+  }
+
