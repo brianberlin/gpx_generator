@@ -1,0 +1,29 @@
+<section class="phx-hero">
+  <h1>Welcome to GPX Generator</h1>
+  <p>Click below to create a path on the map.</p>
+</section>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      .map {
+        display: flex;
+        height: 500px;
+        width: 100%;
+      }
+    </style>
+<section class="row">
+  <article class="column">
+    <div class="map"></div>
+    <a data-remove>Undo</a>
+    <textarea class="gpx"></textarea>
+    <script>
+      // Note: This example requires that you consent to location sharing when
+      // prompted by your browser. If you see the error "The Geolocation service
+      // failed.", it means you probably did not give permission for the browser to
+      // locate you.
+      
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= Application.get_env(:gpx, :google_map_key) %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+  </article>
+</section>

@@ -1,17 +1,14 @@
-defmodule Mix.Tasks.GpxGenerator do
+defmodule Gpx.Generator do
   @moduledoc """
   Documentation for GpxGenerator.
   """
-  use Mix.Task
 
-  def run([path]) do
+  def run(points) do
     Application.ensure_all_started(:timex)
 
-    path
-    |> get_json()
+    points
     |> transform()
     |> template()
-    |> write_gpx(path)
   end
 
   def transform(json) do
@@ -37,10 +34,4 @@ defmodule Mix.Tasks.GpxGenerator do
     </gpx>
     """
   end
-
-  def get_json(filename) do
-    with {:ok, body} <- File.read(filename), {:ok, json} <- Poison.decode(body), do: json
-  end
-
-  def write_gpx(content, filename), do: File.write(filename, content, [:write])
 end
